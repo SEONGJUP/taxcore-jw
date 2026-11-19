@@ -48,7 +48,7 @@ module.exports = async (req, res) => {
       const imgM = desc.match(/<img[^>]+src=["']([^"']+)["']/i);
       let image = imgM ? imgM[1] : '';
       if (!image) image = await ogImage(link);
-      if (image) image = image.replace(/\?type=\w+$/, '') + '?type=w773';
+      if (image) image = image.replace(/\?type=\w+$/, '') + '?type=w2';
       const text = strip(desc);
       return {
         title: tag(it, 'title'),
