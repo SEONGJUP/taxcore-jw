@@ -349,7 +349,7 @@ section{position:relative}
 .timeline b{display:block;font-size:19px;font-weight:800;letter-spacing:-.03em}
 .timeline small{color:var(--muted);font-size:14.5px}
 .sign{display:flex;align-items:center;gap:18px;margin-top:36px;color:var(--ink)}
-.sign__img{width:150px;height:auto;display:block;clip-path:inset(0 100% 0 0);transition:clip-path 2.2s cubic-bezier(.65,.05,.36,1) .4s}
+.sign__img{width:160px;height:auto;display:block;clip-path:inset(0 100% 0 0);transition:clip-path 2.2s cubic-bezier(.65,.05,.36,1) .4s}
 .sign.in .sign__img{clip-path:inset(0 0 0 0)}
 .sign span{font-size:13px;color:var(--muted)}
 
@@ -647,3 +647,18 @@ img{height:auto}.brand__logo{height:38px;width:auto}.footer__logo{height:44px;wi
 .cform__done-a{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .cform__done-a > *{font:inherit;font-size:13.5px;font-weight:700;padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
 .cform__done-a .js-reopen{background:#FEE500;border-color:#FEE500;color:#191600}
+/* kakao guide */
+.kguide{margin-top:22px;padding:18px 18px 16px;border-radius:18px;background:#FFFBD6;border:1px solid #F5E37A}
+.kguide__t{font-weight:800;font-size:15px;color:#3C3300;display:flex;align-items:center;gap:8px}
+.kguide__steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;counter-reset:k}
+.kguide__steps li{position:relative;background:#fff;border-radius:14px;padding:14px 12px 12px;text-align:center;box-shadow:0 1px 2px rgba(60,51,0,.08)}
+.kguide__steps li:not(:last-child)::after{content:"";position:absolute;right:-9px;top:50%;width:8px;height:8px;border-top:2px solid #C9B53A;border-right:2px solid #C9B53A;transform:translateY(-50%) rotate(45deg);z-index:1}
+.kguide__steps em{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#191600;color:#FEE500;font-style:normal;font-weight:800;font-size:13px}
+.kguide__steps b{display:block;margin-top:8px;font-size:14.5px;color:var(--ink)}
+.kguide__steps small{display:block;margin-top:4px;font-size:12.5px;color:var(--muted);line-height:1.45}
+.kguide__steps u{text-decoration:none;background:linear-gradient(transparent 55%,#FEE500 55%);color:var(--ink);font-weight:700}
+.kguide.in .kguide__steps li{animation:kstep .7s var(--ease) both}
+.kguide.in .kguide__steps li:nth-child(2){animation-delay:.12s}.kguide.in .kguide__steps li:nth-child(3){animation-delay:.24s}
+@keyframes kstep{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cform__submit--kakao{margin-top:16px}
+@media (max-width:760px){.kguide__steps{gap:8px}.kguide__steps li{padding:12px 6px 10px}.kguide__steps small{font-size:11.5px}}
