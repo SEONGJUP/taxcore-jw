@@ -349,7 +349,7 @@ section{position:relative}
 .timeline b{display:block;font-size:19px;font-weight:800;letter-spacing:-.03em}
 .timeline small{color:var(--muted);font-size:14.5px}
 .sign{display:flex;align-items:center;gap:18px;margin-top:36px;color:var(--ink)}
-.sign__img{width:160px;height:auto;display:block;clip-path:inset(0 100% 0 0);transition:clip-path 2.2s cubic-bezier(.65,.05,.36,1) .4s}
+.sign__img{width:118px;height:auto;display:block;clip-path:inset(0 100% 0 0);transition:clip-path 2.2s cubic-bezier(.65,.05,.36,1) .4s}
 .sign.in .sign__img{clip-path:inset(0 0 0 0)}
 .sign span{font-size:13px;color:var(--muted)}
 
