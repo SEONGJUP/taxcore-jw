@@ -4,7 +4,9 @@
   const CONFIG = {
     tel: '',          // 예: '02-000-0000'
     email: '',        // 예: 'hello@taxcore.kr'
-    kakao: ''         // 예: 'https://pf.kakao.com/_xxxx'
+    kakao: '',        // 예: 'https://pf.kakao.com/_xxxx'
+    address: '',      // 예: '서울시 OO구 OO로 00'
+    bizNo: ''         // 예: '000-00-00000'
   };
 
   const $ = (s, c = document) => c.querySelector(s);
@@ -13,13 +15,51 @@
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
 
   /* contact config */
-  const tel = $('.js-tel'), kakao = $('.js-kakao');
-  if (CONFIG.tel) { tel.href = 'tel:' + CONFIG.tel.replace(/[^0-9+]/g, ''); $('.js-tel-text').textContent = CONFIG.tel; }
-  else { tel.href = '#contact'; $('.js-tel-text').textContent = '준비 중'; }
-  if (CONFIG.email) $('.js-mail-text').innerHTML = `<a href="mailto:${CONFIG.email}">${CONFIG.email}</a>`;
-  else $('.js-mail-text').textContent = '준비 중';
-  if (CONFIG.kakao) kakao.href = CONFIG.kakao; else { kakao.removeAttribute('target'); kakao.href = '#contact'; }
+  const telHref = CONFIG.tel ? 'tel:' + CONFIG.tel.replace(/[^0-9+]/g, '') : '';
+  $$('.js-tel-link').forEach(a => { if (telHref) a.href = telHref; });
+  $$('.js-tel-label').forEach(s => { if (CONFIG.tel) s.textContent = '☎ ' + CONFIG.tel; });
+  $$('.js-mail-link').forEach(a => { if (CONFIG.email) a.href = 'mailto:' + CONFIG.email; });
+  $$('.js-mail-label').forEach(s => { if (CONFIG.email) s.textContent = '✉ ' + CONFIG.email; });
+  $$('.js-kakao-link').forEach(a => { if (CONFIG.kakao) { a.href = CONFIG.kakao; a.target = '_blank'; a.rel = 'noopener'; } });
+  $$('.js-tel-text').forEach(e => e.textContent = CONFIG.tel || '등록 예정');
+  $$('.js-mail-text').forEach(e => e.textContent = CONFIG.email || '등록 예정');
+  $$('.js-addr-text').forEach(e => e.textContent = CONFIG.address || '등록 예정');
+  if (CONFIG.address) $('.js-addr-foot').textContent = CONFIG.address;
+  if (CONFIG.bizNo) $('.js-biz').textContent = '사업자등록번호 ' + CONFIG.bizNo;
   $('.js-year').textContent = new Date().getFullYear();
+
+  /* service card → preselect inquiry type */
+  $$('.scard__btn[data-type]').forEach(b => b.addEventListener('click', () => {
+    const sel = $('#cform select[name="type"]');
+    const opt = [...sel.options].find(o => o.text === b.dataset.type);
+    if (opt) sel.value = opt.value || opt.text;
+  }));
+
+  /* inquiry form (정적 사이트: 메일 앱 / 문자 앱으로 전달) */
+  const form = $('#cform');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const msg = $('.cform__msg', form);
+    let ok = true;
+    $$('[required]', form).forEach(el => {
+      const bad = el.type === 'checkbox' ? !el.checked : !el.value.trim();
+      (el.closest('.field') || el.closest('.agree')).classList.toggle('err', bad);
+      if (bad) ok = false;
+    });
+    if (!ok) { msg.className = 'cform__msg bad'; msg.textContent = '필수 항목(*)을 확인해 주세요.'; return; }
+    const f = Object.fromEntries(new FormData(form));
+    const body = `[세무회계 정우 상담 문의]\n이름: ${f.name}\n연락처: ${f.phone}\n문의 유형: ${f.type}\n연락 방법: ${f.via}\n\n${f.msg || ''}`;
+    if (CONFIG.email) {
+      location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent('[상담 문의] ' + f.type + ' - ' + f.name)}&body=${encodeURIComponent(body)}`;
+      msg.className = 'cform__msg ok'; msg.textContent = '메일 앱이 열리면 전송 버튼을 눌러주세요.';
+    } else if (CONFIG.tel) {
+      location.href = `sms:${CONFIG.tel.replace(/[^0-9+]/g, '')}?body=${encodeURIComponent(body)}`;
+      msg.className = 'cform__msg ok'; msg.textContent = '문자 앱이 열리면 전송 버튼을 눌러주세요.';
+    } else {
+      msg.className = 'cform__msg bad'; msg.textContent = '온라인 접수 채널을 준비 중입니다. 잠시 후 다시 시도해 주세요.';
+    }
+  });
+  $$('input, select', form).forEach(el => el.addEventListener('change', () => (el.closest('.field') || el.closest('.agree'))?.classList.remove('err')));
 
   /* loader */
   const finishLoad = () => {
@@ -112,7 +152,7 @@
   const secIO = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
-  ['about', 'services', 'promise', 'profile', 'process'].forEach(id => { const s = document.getElementById(id); s && secIO.observe(s); });
+  ['about', 'services', 'promise', 'profile', 'process', 'contact'].forEach(id => { const s = document.getElementById(id); s && secIO.observe(s); });
 
   /* mobile menu */
   const burger = $('.burger');
@@ -125,8 +165,6 @@
   burger.addEventListener('click', () => toggleMenu(!document.body.classList.contains('menu-open')));
   $$('.mobile-menu a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
 
-  /* service cards → contact */
-  $$('.svc').forEach(s => s.addEventListener('click', () => $('#contact').scrollIntoView({ behavior: 'smooth' })));
 
   if (!fine || reduce) return;
 
@@ -171,7 +209,7 @@
   }
 
   /* spotlight on promise cards */
-  $$('.pcard').forEach(c => c.addEventListener('mousemove', e => {
+  $$('.pcard, .scard').forEach(c => c.addEventListener('mousemove', e => {
     const r = c.getBoundingClientRect();
     c.style.setProperty('--mx', `${e.clientX - r.left}px`);
     c.style.setProperty('--my', `${e.clientY - r.top}px`);

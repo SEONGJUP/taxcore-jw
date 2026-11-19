@@ -9,7 +9,9 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="세무회계 정우 | 사업의 코어를 단단하게" />
 <meta property="og:description" content="건강보험공단 출신 세무사가 세금과 4대보험을 함께 봅니다. 대표 세무사 직접 상담." />
-<meta property="og:image" content="/assets/profile.jpg" />
+<meta property="og:image" content="https://taxcore-jw.com/assets/profile.jpg" />
+<meta property="og:url" content="https://taxcore-jw.com/" />
+<link rel="canonical" href="https://taxcore-jw.com/" />
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
@@ -50,8 +52,9 @@
     <a href="#promise">약속</a>
     <a href="#profile">약력</a>
     <a href="#process">상담절차</a>
+    <a href="#contact">문의</a>
   </nav>
-  <a href="#contact" class="btn btn--pill btn--dark nav__cta magnetic"><span>상담 신청</span><i class="arrow"></i></a>
+  <a href="#contact" class="btn btn--pill btn--dark nav__cta magnetic js-kakao-link"><span>카카오톡 빠른상담</span><i class="arrow"></i></a>
   <button class="burger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span></button>
 </header>
 
@@ -86,11 +89,11 @@
         <strong>택스코어 세무사 최정우</strong>입니다.
       </p>
       <div class="hero__actions reveal" data-delay="3">
-        <a href="#contact" class="btn btn--pill btn--accent magnetic"><span>무료 상담 신청하기</span><i class="arrow"></i></a>
-        <a href="#services" class="btn btn--ghost link-u">서비스 살펴보기</a>
+        <a href="#contact" class="btn btn--pill btn--accent magnetic js-kakao-link"><span>카카오톡 빠른상담</span><i class="arrow"></i></a>
+        <a href="#contact" class="btn btn--pill btn--line magnetic js-tel-link"><span class="js-tel-label">전화 문의</span><i class="arrow"></i></a>
       </div>
       <ul class="hero__chips reveal" data-delay="4">
-        <li>기장대리</li><li>세무신고</li><li>4대보험</li><li>절세 컨설팅</li><li>법인 전환</li>
+        <li><i class="chk"></i>대표 세무사 직접 상담</li><li><i class="chk"></i>세금 + 4대보험 원스톱</li><li><i class="chk"></i>절세 방법 먼저 제안</li>
       </ul>
     </div>
 
@@ -101,7 +104,7 @@
       <div class="portrait tilt" data-tilt>
         <div class="portrait__frame">
           <picture>
-            <source srcset="/assets/profile.webp" type="image/webp" />
+            
             <img src="/assets/profile.jpg" alt="세무회계 정우 대표 세무사 최정우" width="1000" height="1250" fetchpriority="high" />
           </picture>
           <div class="portrait__shine"></div>
@@ -176,72 +179,55 @@
     <div class="section-head">
       <p class="section-tag reveal"><span>02</span> Services</p>
       <h2 class="h2 split">사업의 코어를 단단하게,<br/><span class="hl">세무회계 정우</span>가 챙깁니다</h2>
+      <p class="section-sub reveal">필요한 업무를 골라 바로 상담을 신청하세요.</p>
     </div>
 
-    <div class="svc-list">
-      <article class="svc reveal" data-cursor="view">
-        <div class="svc__num">01</div>
-        <div class="svc__icon">
-          <svg viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="36" rx="4" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 16h16M16 23h16M16 30h9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="34" cy="34" r="7" fill="currentColor" opacity=".18"/><path d="M31 34l2.2 2.2 4-4.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="svc__body">
-          <h3>기장대리 · 세무신고</h3>
-          <p>매달 장부를 정리하고 부가세, 종합소득세, 법인세 신고까지 놓치지 않게 챙깁니다.</p>
-          <ul class="tags"><li>월 기장</li><li>부가가치세</li><li>종합소득세</li><li>법인세</li></ul>
-        </div>
-        <span class="svc__go"><i class="arrow"></i></span>
+    <div class="svc-grid">
+      <article class="scard reveal" data-delay="0">
+        <div class="scard__head"><span class="scard__no">01</span><span class="scard__icon"><svg viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="36" rx="4" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 16h16M16 23h16M16 30h9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></div>
+        <h3>기장대리 · 세무신고</h3>
+        <p class="scard__sub">매월 장부부터 세금 신고까지</p>
+        <p class="scard__desc">매달 장부를 정리하고 부가세, 종합소득세, 법인세 신고까지 놓치지 않게 챙깁니다.</p>
+        <span class="scard__badge">신고 일정 선제 안내</span>
+        <a href="#contact" class="scard__btn" data-type="기장·신고대리"><span>상담 신청</span><i class="arrow"></i></a>
       </article>
-
-      <article class="svc reveal" data-cursor="view">
-        <div class="svc__num">02</div>
-        <div class="svc__icon">
-          <svg viewBox="0 0 48 48"><circle cx="17" cy="17" r="6" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="32" cy="19" r="5" fill="none" stroke="currentColor" stroke-width="2.2" opacity=".6"/><path d="M6 38c1.5-7 6-10 11-10s9.5 3 11 10M28 30c1.5-2 3-3 5-3 4 0 7 3 8 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="svc__body">
-          <h3>4대보험 · 인건비 관리</h3>
-          <p>급여, 원천세, 4대보험을 한 번에 관리합니다. 건강보험공단 출신 세무사가 보험료 부담까지 함께 따져드려요.</p>
-          <ul class="tags"><li>급여 관리</li><li>원천세</li><li>4대보험</li><li>보험료 점검</li></ul>
-        </div>
-        <span class="svc__go"><i class="arrow"></i></span>
+      <article class="scard reveal" data-delay="1">
+        <div class="scard__head"><span class="scard__no">02</span><span class="scard__icon"><svg viewBox="0 0 48 48"><circle cx="17" cy="17" r="6" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="32" cy="19" r="5" fill="none" stroke="currentColor" stroke-width="2.2" opacity=".6"/><path d="M6 38c1.5-7 6-10 11-10s9.5 3 11 10M28 30c1.5-2 3-3 5-3 4 0 7 3 8 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></div>
+        <h3>4대보험 · 인건비 관리</h3>
+        <p class="scard__sub">급여 · 원천세 · 4대보험을 한 번에</p>
+        <p class="scard__desc">급여, 원천세, 4대보험을 한 번에 관리합니다. 건강보험공단 출신 세무사가 보험료 부담까지 함께 따져드려요.</p>
+        <span class="scard__badge">공단 출신 세무사</span>
+        <a href="#contact" class="scard__btn" data-type="4대보험·인건비"><span>상담 신청</span><i class="arrow"></i></a>
       </article>
-
-      <article class="svc reveal" data-cursor="view">
-        <div class="svc__num">03</div>
-        <div class="svc__icon">
-          <svg viewBox="0 0 48 48"><path d="M8 36l10-11 7 6 14-16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 15h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 42h32" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".4"/></svg>
-        </div>
-        <div class="svc__body">
-          <h3>절세 컨설팅</h3>
-          <p>신고만 하고 끝내지 않습니다. 대표님 상황에 맞는 절세 방법을 먼저 찾아 제안드립니다.</p>
-          <ul class="tags"><li>공제·감면 검토</li><li>선제 제안</li><li>맞춤 설계</li></ul>
-        </div>
-        <span class="svc__go"><i class="arrow"></i></span>
+      <article class="scard reveal" data-delay="2">
+        <div class="scard__head"><span class="scard__no">03</span><span class="scard__icon"><svg viewBox="0 0 48 48"> <path d="M8 36l10-11 7 6 14-16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 15h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        <h3>절세 컨설팅</h3>
+        <p class="scard__sub">신고 전에 먼저 찾는 절세</p>
+        <p class="scard__desc">신고만 하고 끝내지 않습니다. 대표님 상황에 맞는 절세 방법을 먼저 찾아 제안드립니다.</p>
+        
+        <a href="#contact" class="scard__btn" data-type="절세 컨설팅"><span>상담 신청</span><i class="arrow"></i></a>
       </article>
-
-      <article class="svc reveal" data-cursor="view">
-        <div class="svc__num">04</div>
-        <div class="svc__icon">
-          <svg viewBox="0 0 48 48"><path d="M8 40V20l10-7 10 7v20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M28 40V12l12 6v22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" opacity=".6"/><path d="M14 40v-8h8v8M5 40h38" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
-        </div>
-        <div class="svc__body">
-          <h3>창업 · 법인 전환 상담</h3>
-          <p>사업자 등록부터 개인사업자의 법인 전환까지, 시작할 때부터 구조를 단단하게 잡아드립니다.</p>
-          <ul class="tags"><li>사업자 등록</li><li>법인 설립</li><li>법인 전환</li></ul>
-        </div>
-        <span class="svc__go"><i class="arrow"></i></span>
+      <article class="scard reveal" data-delay="0">
+        <div class="scard__head"><span class="scard__no">04</span><span class="scard__icon"><svg viewBox="0 0 48 48"><path d="M8 40V20l10-7 10 7v20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M28 40V12l12 6v22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" opacity=".6"/><path d="M14 40v-8h8v8M5 40h38" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></span></div>
+        <h3>창업 · 법인 전환 상담</h3>
+        <p class="scard__sub">시작부터 구조를 단단하게</p>
+        <p class="scard__desc">사업자 등록부터 개인사업자의 법인 전환까지, 시작할 때부터 구조를 단단하게 잡아드립니다.</p>
+        
+        <a href="#contact" class="scard__btn" data-type="창업·법인전환"><span>상담 신청</span><i class="arrow"></i></a>
       </article>
-
-      <article class="svc reveal" data-cursor="view">
-        <div class="svc__num">05</div>
-        <div class="svc__icon">
-          <svg viewBox="0 0 48 48"><path d="M24 6l15 8v4H9v-4l15-8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M13 22v13M21 22v13M27 22v13M35 22v13M8 40h32" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="svc__body">
-          <h3>양도 · 상속 · 증여 상담</h3>
-          <p>대표님의 재산 관련 세금, 명확하게 처리해드립니다.</p>
-          <ul class="tags"><li>양도소득세</li><li>상속세</li><li>증여세</li></ul>
-        </div>
-        <span class="svc__go"><i class="arrow"></i></span>
+      <article class="scard reveal" data-delay="1">
+        <div class="scard__head"><span class="scard__no">05</span><span class="scard__icon"><svg viewBox="0 0 48 48"><path d="M24 6l15 8v4H9v-4l15-8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M13 22v13M21 22v13M27 22v13M35 22v13M8 40h32" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></div>
+        <h3>양도 · 상속 · 증여 상담</h3>
+        <p class="scard__sub">재산 관련 세금, 명확하게</p>
+        <p class="scard__desc">대표님의 재산 관련 세금, 명확하게 처리해드립니다.</p>
+        
+        <a href="#contact" class="scard__btn" data-type="양도·상속·증여"><span>상담 신청</span><i class="arrow"></i></a>
+      </article>
+      <article class="scard scard--cta reveal" data-delay="2">
+        <div class="scard__head"><span class="scard__no">?</span></div>
+        <h3>어떤 업무인지<br/>잘 모르겠다면</h3>
+        <p class="scard__desc">상황만 말씀해 주세요. 대표 세무사가 필요한 업무를 직접 정리해 드립니다.</p>
+        <a href="#contact" class="scard__btn scard__btn--light"><span>무료 상담 받기</span><i class="arrow"></i></a>
       </article>
     </div>
   </div>
@@ -289,7 +275,7 @@
   <div class="container profile__wrap">
     <div class="profile__photo reveal-img">
       <picture>
-        <source srcset="/assets/profile.webp" type="image/webp" />
+        
         <img src="/assets/profile.jpg" alt="대표 세무사 최정우 프로필" loading="lazy" width="1000" height="1250" />
       </picture>
       <div class="profile__name">
@@ -300,6 +286,7 @@
     <div class="profile__info">
       <p class="section-tag reveal"><span>04</span> Profile</p>
       <h2 class="h2 split">세금과 보험료를<br/><span class="hl">함께 보는</span> 세무사</h2>
+      <ul class="ptags reveal"><li>기장대리·세무신고</li><li>4대보험·인건비</li><li>절세 컨설팅</li><li>법인 전환</li><li>양도·상속·증여</li></ul>
       <blockquote class="quote reveal">
         <span class="qmark">“</span>
         대표님이 본업에만 집중하실 수 있도록, 사업의 가장 중심인 숫자를 단단하게 잡아드리겠습니다.
@@ -334,22 +321,70 @@
   </div>
 </section>
 
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-tag reveal"><span>06</span> Contact Us</p>
+      <h2 class="h2 split">상담 문의 남기기</h2>
+      <p class="section-sub reveal">편하신 방법으로 문의해 주세요. 남겨주신 내용은 대표 세무사가 직접 확인하고 연락드립니다.</p>
+    </div>
+    <div class="contact__grid">
+      <form class="cform reveal" id="cform" novalidate>
+        <div class="cform__row">
+          <label class="field"><span>이름 <b>*</b></span><input name="name" required placeholder="홍길동" autocomplete="name" /></label>
+          <label class="field"><span>연락처 <b>*</b></span><input name="phone" required placeholder="010-1234-5678" inputmode="tel" autocomplete="tel" /></label>
+        </div>
+        <div class="cform__row">
+          <label class="field"><span>문의 유형 <b>*</b></span>
+            <select name="type" required>
+              <option value="">선택해 주세요</option>
+              <option>기장·신고대리</option><option>4대보험·인건비</option><option>절세 컨설팅</option>
+              <option>창업·법인전환</option><option>양도·상속·증여</option><option>세무사무실 변경</option><option>기타</option>
+            </select></label>
+          <label class="field"><span>편한 연락 방법</span>
+            <select name="via"><option>전화</option><option>문자</option><option>카카오톡</option><option>이메일</option></select></label>
+        </div>
+        <label class="field"><span>문의 내용</span><textarea name="msg" rows="5" placeholder="업종, 사업 형태(개인/법인), 궁금하신 점을 간단히 적어주시면 더 정확하게 안내해 드립니다."></textarea></label>
+        <label class="agree"><input type="checkbox" name="agree" required /><i></i><span>개인정보 수집·이용에 동의합니다 <b>*</b></span></label>
+        <p class="agree__note"><b>수집 항목</b> 이름, 연락처, 문의 유형·내용 · <b>목적</b> 세무 상담 문의 응대 · <b>보유 기간</b> 상담 종료 후 지체 없이 파기</p>
+        <button type="submit" class="btn btn--pill btn--accent cform__submit"><span>문의 보내기</span><i class="arrow"></i></button>
+        <p class="cform__msg" role="status" aria-live="polite"></p>
+      </form>
+
+      <aside class="quick reveal" data-delay="1">
+        <div class="quick__icon"><svg viewBox="0 0 24 24"><path d="M12 4C6.9 4 3 7.1 3 11c0 2.5 1.6 4.6 4 5.9L6.2 20l3.6-2.3c.7.1 1.4.2 2.2.2 5.1 0 9-3.1 9-7s-3.9-6.9-9-6.9z" fill="currentColor"/></svg></div>
+        <h3>바로 이야기하고 싶으시다면</h3>
+        <p>가장 빠른 방법은 <em>카카오톡</em>입니다.<br/>전화·이메일도 모두 확인합니다.</p>
+        <a href="#contact" class="quick__kakao js-kakao-link">카카오톡 빠른상담</a>
+        <span class="quick__or">또는</span>
+        <a href="#contact" class="quick__line js-tel-link"><span class="js-tel-label">전화 문의</span></a>
+        <a href="#contact" class="quick__line js-mail-link"><span class="js-mail-label">이메일 문의</span></a>
+        <ul class="quick__list"><li>대표 세무사가 직접 확인</li><li>방문 없이 비대면 상담 가능</li><li>평일 09:00–18:00 상담</li></ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
-<section class="cta" id="contact">
+<section class="cta">
   <div class="cta__card">
     <div class="cta__bg" aria-hidden="true"><div class="cta__orb"></div><div class="cta__rings"><span></span><span></span><span></span></div></div>
-    <p class="section-tag light reveal"><span>06</span> Contact</p>
+    <p class="section-tag light reveal"><span>07</span> TAXCORE</p>
     <h2 class="cta__title split">사업의 코어,<br/>지금 <em class="serif">단단하게</em> 잡으세요.</h2>
     <p class="cta__desc reveal">첫 상담은 대표 세무사가 직접 진행합니다. 부담 없이 문의 주세요.</p>
     <div class="cta__actions reveal">
-      <a href="tel:" class="btn btn--pill btn--light magnetic js-tel"><span>전화 상담하기</span><i class="arrow"></i></a>
-      <a href="#" class="btn btn--pill btn--outline magnetic js-kakao" target="_blank" rel="noopener"><span>카카오톡 문의</span><i class="arrow"></i></a>
+      <a href="#contact" class="btn btn--pill btn--light magnetic js-tel-link"><span>지금 전화하기</span><i class="arrow"></i></a>
+      <a href="#contact" class="btn btn--pill btn--outline magnetic js-kakao-link"><span>카카오톡 문의</span><i class="arrow"></i></a>
     </div>
-    <ul class="cta__info reveal">
-      <li><small>Tel</small><b class="js-tel-text">—</b></li>
-      <li><small>Email</small><b class="js-mail-text">—</b></li>
-      <li><small>Hours</small><b>평일 09:00 – 18:00</b></li>
-    </ul>
+    <dl class="cta__info reveal">
+      <div><dt>상호</dt><dd>세무회계 정우</dd></div>
+      <div><dt>대표</dt><dd>최정우 세무사</dd></div>
+      <div><dt>전화</dt><dd class="js-tel-text">—</dd></div>
+      <div><dt>이메일</dt><dd class="js-mail-text">—</dd></div>
+      <div><dt>주소</dt><dd class="js-addr-text">—</dd></div>
+      <div><dt>상담시간</dt><dd>평일 09:00–18:00 (주말·공휴일 휴무)</dd></div>
+    </dl>
   </div>
 </section>
 </main>
@@ -359,7 +394,8 @@
   <div class="container footer__row">
     <div class="footer__brand">
       <b>세무회계 정우</b>
-      <p>대표 세무사 최정우</p>
+      <p>대표 최정우 · <span class="js-biz">사업자등록번호 등록 예정</span></p>
+      <p class="js-addr-foot"></p>
     </div>
     <nav class="footer__nav" aria-label="하단 메뉴">
       <a href="#about">소개</a><a href="#services">서비스</a><a href="#promise">약속</a><a href="#profile">약력</a><a href="#contact">상담 신청</a>
