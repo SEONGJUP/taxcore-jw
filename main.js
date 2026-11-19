@@ -190,7 +190,7 @@
   const secIO = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
-  ['about', 'services', 'promise', 'profile', 'process', 'contact'].forEach(id => { const s = document.getElementById(id); s && secIO.observe(s); });
+  ['about', 'services', 'promise', 'profile', 'process', 'faq', 'contact'].forEach(id => { const s = document.getElementById(id); s && secIO.observe(s); });
 
   /* mobile menu */
   const burger = $('.burger');

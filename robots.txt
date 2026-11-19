@@ -1,0 +1,34 @@
+# 세무회계 정우 · https://taxcore-jw.com
+User-agent: *
+Allow: /
+
+# 네이버(Yeti) · 다음(Daumoa) · 구글(Googlebot) 모두 허용
+User-agent: Yeti
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# AI 검색/답변 엔진 허용 (GEO)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://taxcore-jw.com/sitemap.xml
+
+# 다음 웹마스터도구 인증 코드는 아래 형식으로 추가하세요
+# #DaumWebMasterTool:발급받은코드
