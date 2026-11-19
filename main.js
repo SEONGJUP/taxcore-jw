@@ -40,7 +40,13 @@
   $$('.js-map-kakao').forEach(a => a.href = 'https://map.kakao.com/?q=' + q);
   $$('.js-tel-text').forEach(e => e.innerHTML = CONFIG.tel ? `<a href="tel:${CONFIG.tel.replace(/[^0-9+]/g, '')}">${CONFIG.tel}</a>` : '등록 예정');
   $$('.js-mail-text').forEach(e => e.innerHTML = CONFIG.email ? `<a href="mailto:${CONFIG.email}">${CONFIG.email}</a>` : '등록 예정');
-  $$('.js-addr-text').forEach(e => e.textContent = CONFIG.address || '등록 예정');
+  $$('.js-addr-text').forEach(e => {
+    if (!CONFIG.address) { e.textContent = '등록 예정'; return; }
+    const i = CONFIG.address.lastIndexOf(', ');
+    e.textContent = i > 0 ? CONFIG.address.slice(0, i + 2) : '';
+    const s = document.createElement('span'); s.style.whiteSpace = 'nowrap';
+    s.textContent = i > 0 ? CONFIG.address.slice(i + 2) : CONFIG.address; e.appendChild(s);
+  });
   if (CONFIG.address) $('.js-addr-foot').textContent = CONFIG.address;
   if (CONFIG.bizNo) $('.js-biz').textContent = ' · 사업자등록번호 ' + CONFIG.bizNo;
   $('.js-contact-foot').textContent = [CONFIG.tel && '전화 ' + CONFIG.tel, CONFIG.fax && '팩스 ' + CONFIG.fax, CONFIG.email].filter(Boolean).join(' · ');
