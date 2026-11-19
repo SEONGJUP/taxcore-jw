@@ -626,3 +626,8 @@ section[id]{scroll-margin-top:84px}
   .scard:hover{box-shadow:none}
 }
 img{height:auto}.brand__logo{height:38px;width:auto}.footer__logo{height:44px;width:auto}@media (max-width:760px){.brand__logo{height:32px}}
+/* service cards: white by default, beige on hover */
+.scard:not(.scard--cta){background:#fff;border:1px solid var(--line)}
+.scard:not(.scard--cta) .scard__icon{background:var(--paper)}
+.scard:not(.scard--cta):hover{background:var(--paper);border-color:rgba(43,111,120,.28)}
+.scard:not(.scard--cta):hover .scard__icon{background:var(--accent);color:#fff}
