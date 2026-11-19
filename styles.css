@@ -663,3 +663,12 @@ img{height:auto}.brand__logo{height:38px;width:auto}.footer__logo{height:44px;wi
 .cform__submit--kakao{margin-top:16px}
 @media (max-width:760px){.kguide__steps{gap:8px}.kguide__steps li{padding:12px 6px 10px}.kguide__steps small{font-size:11.5px}}
 @media (max-width:760px){.scard:not(.scard--cta) .scard__btn{display:none}.scard:not(.scard--cta){padding-bottom:26px}}
+@media (max-width:760px){
+  .kguide__steps{grid-template-columns:1fr;gap:10px}
+  .kguide__steps li{display:grid;grid-template-columns:30px 1fr;column-gap:12px;align-items:center;text-align:left;padding:12px 14px}
+  .kguide__steps em{grid-row:span 2;width:30px;height:30px}
+  .kguide__steps b{margin-top:0;font-size:15px}
+  .kguide__steps small{margin-top:2px;font-size:13px}
+  .kguide__steps small br{display:none}
+  .kguide__steps li:not(:last-child)::after{right:auto;left:26px;top:auto;bottom:-8px;transform:rotate(135deg)}
+}
