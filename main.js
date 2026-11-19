@@ -3,13 +3,13 @@
   // ▼ 연락처 설정 — 실제 정보로 교체하세요
   const CONFIG = {
     tel: '031-8027-8543',
-    mobile: '010-7753-1239',
+    mobile: '',
     fax: '031-8027-8542',
     email: 'taxjw24@gmail.com',
-    kakao: '',        // 카카오톡 채널 개설 후 입력 (예: 'https://pf.kakao.com/_xxxx')
-    address: '경기도 하남시 미사강변중앙로 173 (미사리버에비뉴) 302-2호',
+    kakao: 'https://pf.kakao.com/_mrzWn/chat',
+    address: '경기도 하남시 미사강변중앙로 173, 302-2호(미사리버에비뉴)',
     mapQuery: '경기도 하남시 미사강변중앙로 173',
-    bizNo: ''         // 예: '000-00-00000'
+    bizNo: '332-11-03104'
   };
 
   const $ = (s, c = document) => c.querySelector(s);
