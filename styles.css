@@ -198,7 +198,7 @@ h1,h2,h3,p{margin:0}
 .fc__icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--accent);color:#fff;flex:none}
 .fc__icon svg{width:22px;height:22px}
 .fc1{left:-56px;bottom:22%;animation:bob 5s ease-in-out infinite}
-.fc2{right:-40px;top:16%;animation:bob 6s ease-in-out .8s infinite}
+.fc2{right:-40px;top:44%;animation:bob 6s ease-in-out .8s infinite}
 .fc2 .fc__icon{background:var(--ink)}
 @keyframes bob{0%,100%{translate:0 0}50%{translate:0 -12px}}
 .rotor{position:absolute;right:-30px;bottom:-26px;width:124px;height:124px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;
@@ -430,8 +430,8 @@ section{position:relative}
   .brand__text small{display:none}
   .hero__title{font-size:clamp(48px,14vw,72px)}
   .hero__actions .btn--pill{width:100%;justify-content:center}
-  .fc1{left:-10px;bottom:10%}
-  .fc2{right:-8px;top:8%}
+  .fc1{left:-10px;bottom:3%}
+  .fc2{right:-8px;top:40%}
   .float-card{padding:9px 13px 9px 9px;border-radius:16px}
   .float-card b{font-size:13px}
   .fc__icon{width:32px;height:32px;border-radius:10px}
