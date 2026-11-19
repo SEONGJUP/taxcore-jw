@@ -214,10 +214,10 @@ h1,h2,h3,p{margin:0}
 @keyframes drip{to{top:100%}}
 
 /* ---------- Marquee ---------- */
-.marquee{position:relative;background:var(--ink);color:#fff;padding:26px 0;overflow:hidden;transform:rotate(-1.6deg) scale(1.04);margin:20px 0 0;z-index:2}
+.marquee{position:relative;background:var(--ink);color:#fff;padding:18px 0;overflow:hidden;transform:rotate(-1.6deg) scale(1.04);margin:20px 0 0;z-index:2}
 .marquee__track{display:flex;width:max-content;animation:marquee 32s linear infinite}
 .marquee:hover .marquee__track{animation-play-state:paused}
-.marquee__row{display:flex;align-items:center;gap:36px;padding-right:36px;font-size:clamp(28px,4vw,52px);font-weight:800;letter-spacing:-.04em;white-space:nowrap}
+.marquee__row{display:flex;align-items:center;gap:26px;padding-right:26px;font-size:clamp(20px,2.8vw,36px);font-weight:800;letter-spacing:-.04em;white-space:nowrap}
 .marquee__row .o{color:transparent;-webkit-text-stroke:1.2px rgba(255,255,255,.75)}
 .marquee__row i{font-style:normal;color:var(--accent-2);font-size:.6em}
 @keyframes marquee{to{transform:translateX(-50%)}}
@@ -259,10 +259,10 @@ section{position:relative}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(70px,9vw,120px);border-top:1px solid var(--line)}
 .stat{padding:34px 26px 10px 0;border-right:1px solid var(--line);margin-right:26px}
 .stat:last-child{border-right:0;margin-right:0}
-.stat__num{font-size:clamp(48px,5.4vw,76px);font-weight:800;letter-spacing:-.05em;line-height:1;display:flex;align-items:baseline}
-.stat__num em{font-style:normal;font-size:.36em;color:var(--accent);margin-left:6px;letter-spacing:-.02em;font-weight:700}
+.stat__num{font-size:clamp(36px,3.6vw,52px);white-space:nowrap;font-weight:800;letter-spacing:-.05em;line-height:1;display:flex;align-items:baseline}
+.stat__num em{font-style:normal;font-size:1em;color:var(--accent);margin-left:2px;letter-spacing:inherit;font-weight:inherit}
 .stat__num.serif{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.02em}
-.stat__num.serif em{font-family:var(--serif);font-size:.6em;margin-left:0}
+.stat__num.serif em{font-family:var(--serif);font-size:1em;margin-left:0}
 .stat p{margin-top:16px;color:var(--muted);font-size:15px;line-height:1.55}
 
 /* ---------- Services ---------- */
@@ -349,9 +349,8 @@ section{position:relative}
 .timeline b{display:block;font-size:19px;font-weight:800;letter-spacing:-.03em}
 .timeline small{color:var(--muted);font-size:14.5px}
 .sign{display:flex;align-items:center;gap:18px;margin-top:36px;color:var(--ink)}
-.sign svg{width:170px;height:50px}
-.sign__path{stroke-dasharray:700;stroke-dashoffset:700;transition:stroke-dashoffset 2.6s var(--ease) .4s}
-.sign.in .sign__path{stroke-dashoffset:0}
+.sign__img{width:150px;height:auto;display:block;clip-path:inset(0 100% 0 0);transition:clip-path 2.2s cubic-bezier(.65,.05,.36,1) .4s}
+.sign.in .sign__img{clip-path:inset(0 0 0 0)}
 .sign span{font-size:13px;color:var(--muted)}
 
 /* ---------- Process ---------- */
@@ -578,7 +577,7 @@ section{position:relative}
 
 /* logo */
 .brand__logo{height:38px;width:auto;display:block}
-.loader__logo{width:min(220px,52vw);opacity:0;transform:translateY(24px) scale(.96);animation:logoIn 1s var(--ease) .1s forwards}
+.loader__logo{width:min(200px,48vw);height:auto;opacity:0;transform:translateY(24px) scale(.96);animation:logoIn 1s var(--ease) .1s forwards}
 @keyframes logoIn{to{opacity:1;transform:none}}
 .footer__logo{height:44px;width:auto;margin-bottom:12px}
 .cta__info dd a{border-bottom:1px solid rgba(255,255,255,.3)}
@@ -588,3 +587,42 @@ section{position:relative}
 .maplinks a:hover{background:rgba(255,255,255,.1)}
 @media (max-width:760px){.brand__logo{height:32px}}
 .cta__info .span-all{grid-column:1/-1}.cta__info dd .maplinks a{border-bottom:0}
+
+/* =========== v3: polish =========== */
+/* anchor offset under fixed nav */
+section[id]{scroll-margin-top:84px}
+/* nav: sliding underline instead of dot */
+.nav__links a::before{content:"";position:absolute;left:16px;right:16px;bottom:6px;height:2px;border-radius:2px;background:var(--accent);
+  transform:scaleX(0);transform-origin:100% 50%;transition:transform .45s var(--ease)}
+.nav__links a:hover::before,.nav__links a.active::before{transform:scaleX(1);transform-origin:0 50%}
+.nav__links a.active::after{display:none}
+/* tactile press + accessible focus */
+.btn:active,.scard__btn:active,.quick__kakao:active,.quick__line:active{transform:scale(.97)!important;transition-duration:.12s}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:10px}
+/* hero "Core" — slow ink shimmer */
+.hero__title .accent-serif{background:linear-gradient(100deg,var(--accent) 20%,#5FA8AC 40%,var(--accent) 60%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:ink 6s ease-in-out infinite}
+@keyframes ink{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+/* section tag number: draw-in ring */
+.section-tag span{transition:transform 1s var(--ease),box-shadow 1s var(--ease)}
+.section-tag:not(.in) span{transform:rotate(-120deg) scale(.6)}
+.section-tag.in span{box-shadow:0 0 0 6px rgba(43,111,120,.08)}
+/* profile photo: gentle zoom on hover */
+.profile__photo:hover img{transform:scale(1.08)!important}
+.profile__photo img{transition:transform 1.6s var(--ease)}
+/* stats: hairline grows in */
+.stats{position:relative;border-top-color:transparent}
+.stats::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--line);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.6s var(--ease)}
+.stats.in::before{transform:scaleX(1)}
+/* footer wordmark rises in, outline fills on hover */
+.footer__big span{display:inline-block;transform:translateY(35%);opacity:0;transition:transform 1.3s var(--ease),opacity 1.3s var(--ease)}
+.footer__big.in span{transform:none;opacity:1}
+.footer__big.in span.o{transition-delay:.15s}
+.footer__big .o{background:linear-gradient(var(--ink),var(--ink)) 0 100%/100% 0 no-repeat;-webkit-background-clip:text;background-clip:text;transition:background-size .9s var(--ease),transform 1.3s var(--ease) .15s,opacity 1.3s var(--ease) .15s}
+.footer__big:hover .o{background-size:100% 100%}
+/* touch devices: no sticky hover lifts */
+@media (hover:none){
+  .scard:hover,.step:hover .step__dot{transform:none}
+  .scard:hover{box-shadow:none}
+}
+img{height:auto}.brand__logo{height:38px;width:auto}.footer__logo{height:44px;width:auto}@media (max-width:760px){.brand__logo{height:32px}}

@@ -112,7 +112,7 @@
       io.unobserve(e.target);
     });
   }, { threshold: .18, rootMargin: '0px 0px -6% 0px' });
-  $$('.reveal, .split, .pcard, .steps, .sign').forEach(el => io.observe(el));
+  $$('.reveal, .split, .pcard, .steps, .sign, .stats, .footer__big').forEach(el => io.observe(el));
   // clip-path로 가려진 요소는 IO가 감지 못하므로 부모를 관찰
   const imgIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.querySelector('.reveal-img')?.classList.add('in'); imgIO.unobserve(e.target); } }), { threshold: .15 });
   $$('.reveal-img').forEach(el => imgIO.observe(el.parentElement));
