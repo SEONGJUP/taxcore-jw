@@ -99,6 +99,33 @@
   if (!CONFIG.email) $('.js-mail', form).remove();
   $$('input, select', form).forEach(el => el.addEventListener('change', () => (el.closest('.field') || el.closest('.agree'))?.classList.remove('err')));
 
+
+  /* NAVER BLOG: 최신 글 3개 */
+  (function loadBlog() {
+    const grid = $('[data-blog]'); if (!grid) return;
+    const BLOG = 'https://blog.naver.com/taxjw24';
+    const esc = s => String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const fmt = iso => { const d = new Date(iso); return isNaN(d) ? '' : `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`; };
+    const empty = () => { grid.innerHTML = `<div class="blog__empty">블로그 글을 불러오지 못했어요.<br/><a href="${BLOG}" target="_blank" rel="noopener">네이버 블로그에서 보기 →</a></div>`; };
+    fetch('/api/blog?limit=3').then(r => r.json()).then(d => {
+      const posts = (d && d.posts) || [];
+      if (!posts.length) return empty();
+      grid.innerHTML = posts.map((p, i) => `
+        <a class="bcard bcard--in" style="animation-delay:${i * 0.12}s" href="${esc(p.link)}" target="_blank" rel="noopener">
+          <div class="bcard__thumb${p.image ? '' : ' bcard__thumb--empty'}">
+            ${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('bcard__thumb--empty');this.src='/assets/logo-white.png'"/>` : `<img src="/assets/logo-white.png" alt="" />`}
+            ${p.category ? `<span class="bcard__badge">${esc(p.category)}</span>` : ''}
+          </div>
+          <div class="bcard__body">
+            <span class="bcard__date">${fmt(p.date)}</span>
+            <h3 class="bcard__title">${esc(p.title)}</h3>
+            ${p.excerpt ? `<p class="bcard__ex">${esc(p.excerpt)}</p>` : ''}
+            <span class="bcard__go">글 읽기 <i class="arrow"></i></span>
+          </div>
+        </a>`).join('');
+    }).catch(empty);
+  })();
+
   /* loader */
   const finishLoad = () => {
     $('.loader').classList.add('done');
@@ -190,7 +217,7 @@
   const secIO = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
-  ['about', 'services', 'promise', 'profile', 'process', 'faq', 'contact'].forEach(id => { const s = document.getElementById(id); s && secIO.observe(s); });
+  ['about', 'services', 'promise', 'profile', 'process', 'blog', 'faq', 'contact'].forEach(id => { const s = document.getElementById(id); s && secIO.observe(s); });
 
   /* mobile menu */
   const burger = $('.burger');
