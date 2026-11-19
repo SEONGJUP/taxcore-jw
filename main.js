@@ -2,10 +2,13 @@
 (() => {
   // ▼ 연락처 설정 — 실제 정보로 교체하세요
   const CONFIG = {
-    tel: '',          // 예: '02-000-0000'
-    email: '',        // 예: 'hello@taxcore.kr'
-    kakao: '',        // 예: 'https://pf.kakao.com/_xxxx'
-    address: '',      // 예: '서울시 OO구 OO로 00'
+    tel: '031-8027-8543',
+    mobile: '010-7753-1239',
+    fax: '031-8027-8542',
+    email: 'taxjw24@gmail.com',
+    kakao: '',        // 카카오톡 채널 개설 후 입력 (예: 'https://pf.kakao.com/_xxxx')
+    address: '경기도 하남시 미사강변중앙로 173 (미사리버에비뉴) 302-2호',
+    mapQuery: '경기도 하남시 미사강변중앙로 173',
     bizNo: ''         // 예: '000-00-00000'
   };
 
@@ -20,12 +23,27 @@
   $$('.js-tel-label').forEach(s => { if (CONFIG.tel) s.textContent = '☎ ' + CONFIG.tel; });
   $$('.js-mail-link').forEach(a => { if (CONFIG.email) a.href = 'mailto:' + CONFIG.email; });
   $$('.js-mail-label').forEach(s => { if (CONFIG.email) s.textContent = '✉ ' + CONFIG.email; });
-  $$('.js-kakao-link').forEach(a => { if (CONFIG.kakao) { a.href = CONFIG.kakao; a.target = '_blank'; a.rel = 'noopener'; } });
-  $$('.js-tel-text').forEach(e => e.textContent = CONFIG.tel || '등록 예정');
-  $$('.js-mail-text').forEach(e => e.textContent = CONFIG.email || '등록 예정');
+  const digits = v => v.replace(/[^0-9+]/g, '');
+  $$('.js-kakao-link').forEach(a => {
+    if (CONFIG.kakao) { a.href = CONFIG.kakao; a.target = '_blank'; a.rel = 'noopener'; return; }
+    // 카카오 채널 개설 전: 문자 상담으로 대체
+    if (CONFIG.mobile) {
+      a.href = 'sms:' + digits(CONFIG.mobile);
+      const s = a.querySelector('span'); (s || a).textContent = a.classList.contains('nav__cta') ? '문자 상담' : '문자 상담하기';
+    }
+  });
+  const link = (v, href) => `<a href="${href}">${v}</a>`;
+  $$('.js-mobile-text').forEach(e => e.innerHTML = CONFIG.mobile ? link(CONFIG.mobile, 'tel:' + digits(CONFIG.mobile)) : '—');
+  $$('.js-fax-text').forEach(e => e.textContent = CONFIG.fax || '—');
+  const q = encodeURIComponent(CONFIG.mapQuery || CONFIG.address);
+  $$('.js-map-naver').forEach(a => a.href = 'https://map.naver.com/p/search/' + q);
+  $$('.js-map-kakao').forEach(a => a.href = 'https://map.kakao.com/?q=' + q);
+  $$('.js-tel-text').forEach(e => e.innerHTML = CONFIG.tel ? `<a href="tel:${CONFIG.tel.replace(/[^0-9+]/g, '')}">${CONFIG.tel}</a>` : '등록 예정');
+  $$('.js-mail-text').forEach(e => e.innerHTML = CONFIG.email ? `<a href="mailto:${CONFIG.email}">${CONFIG.email}</a>` : '등록 예정');
   $$('.js-addr-text').forEach(e => e.textContent = CONFIG.address || '등록 예정');
   if (CONFIG.address) $('.js-addr-foot').textContent = CONFIG.address;
-  if (CONFIG.bizNo) $('.js-biz').textContent = '사업자등록번호 ' + CONFIG.bizNo;
+  if (CONFIG.bizNo) $('.js-biz').textContent = ' · 사업자등록번호 ' + CONFIG.bizNo;
+  $('.js-contact-foot').textContent = [CONFIG.tel && '전화 ' + CONFIG.tel, CONFIG.fax && '팩스 ' + CONFIG.fax, CONFIG.email].filter(Boolean).join(' · ');
   $('.js-year').textContent = new Date().getFullYear();
 
   /* service card → preselect inquiry type */
