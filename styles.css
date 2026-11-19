@@ -672,3 +672,4 @@ img{height:auto}.brand__logo{height:38px;width:auto}.footer__logo{height:44px;wi
   .kguide__steps small br{display:none}
   .kguide__steps li:not(:last-child)::after{right:auto;left:26px;top:auto;bottom:-8px;transform:rotate(135deg)}
 }
+@media (max-width:760px){.cta__info{grid-template-columns:1fr;gap:18px}.cta__info dd{word-break:keep-all;white-space:normal}.cta__info dd a{white-space:nowrap}}
