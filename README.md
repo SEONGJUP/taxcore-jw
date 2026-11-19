@@ -1,4 +1,4 @@
-# taxcore-cjw
+# taxcore-jw
 
 세무회계 정우(택스코어 세무사 최정우) 랜딩 페이지 — 정적 HTML/CSS/JS, Vercel 배포.
 
