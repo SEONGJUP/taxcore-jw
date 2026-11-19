@@ -260,7 +260,7 @@ section{position:relative}
 .stat{padding:34px 26px 10px 0;border-right:1px solid var(--line);margin-right:26px}
 .stat:last-child{border-right:0;margin-right:0}
 .stat__num{font-size:clamp(36px,3.6vw,52px);white-space:nowrap;font-weight:800;letter-spacing:-.05em;line-height:1;display:flex;align-items:baseline}
-.stat__num em{font-style:normal;font-size:1em;color:var(--accent);margin-left:2px;letter-spacing:inherit;font-weight:inherit}
+.stat__num em{font-style:normal;font-size:1em;color:inherit;margin-left:2px;letter-spacing:inherit;font-weight:inherit}
 .stat__num.serif{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.02em}
 .stat__num.serif em{font-family:var(--serif);font-size:1em;margin-left:0}
 .stat p{margin-top:16px;color:var(--muted);font-size:15px;line-height:1.55}
