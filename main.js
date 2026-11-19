@@ -53,10 +53,18 @@
     if (opt) sel.value = opt.value || opt.text;
   }));
 
-  /* inquiry form (정적 사이트: 메일 앱 / 문자 앱으로 전달) */
+  /* inquiry form → 카카오톡 채널 (내용 자동 복사 후 채팅방 열기) */
   const form = $('#cform');
+  const done = $('.cform__done', form), preview = $('.cform__preview', form);
+  const copyText = async text => {
+    try { await navigator.clipboard.writeText(text); return true; } catch (_) {}
+    try { const t = document.createElement('textarea'); t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+      document.body.appendChild(t); t.select(); const ok = document.execCommand('copy'); t.remove(); return ok; } catch (_) { return false; }
+  };
+  let lastBody = '';
   form.addEventListener('submit', e => {
     e.preventDefault();
+    const mode = (e.submitter && e.submitter.dataset.mode) || 'kakao';
     const msg = $('.cform__msg', form);
     let ok = true;
     $$('[required]', form).forEach(el => {
@@ -66,17 +74,23 @@
     });
     if (!ok) { msg.className = 'cform__msg bad'; msg.textContent = '필수 항목(*)을 확인해 주세요.'; return; }
     const f = Object.fromEntries(new FormData(form));
-    const body = `[세무회계 정우 상담 문의]\n이름: ${f.name}\n연락처: ${f.phone}\n문의 유형: ${f.type}\n연락 방법: ${f.via}\n\n${f.msg || ''}`;
-    if (CONFIG.email) {
-      location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent('[상담 문의] ' + f.type + ' - ' + f.name)}&body=${encodeURIComponent(body)}`;
-      msg.className = 'cform__msg ok'; msg.textContent = '메일 앱이 열리면 전송 버튼을 눌러주세요.';
-    } else if (CONFIG.tel) {
-      location.href = `sms:${CONFIG.tel.replace(/[^0-9+]/g, '')}?body=${encodeURIComponent(body)}`;
-      msg.className = 'cform__msg ok'; msg.textContent = '문자 앱이 열리면 전송 버튼을 눌러주세요.';
-    } else {
-      msg.className = 'cform__msg bad'; msg.textContent = '온라인 접수 채널을 준비 중입니다. 잠시 후 다시 시도해 주세요.';
+    lastBody = `[홈페이지 상담 문의]\n· 이름: ${f.name}\n· 연락처: ${f.phone}\n· 문의 유형: ${f.type}\n· 편한 연락 방법: ${f.via}` + (f.msg ? `\n· 문의 내용: ${f.msg.trim()}` : '');
+    msg.textContent = ''; msg.className = 'cform__msg';
+    if (mode === 'mail' && CONFIG.email) {
+      location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent('[상담 문의] ' + f.type + ' - ' + f.name)}&body=${encodeURIComponent(lastBody)}`;
+      return;
     }
+    // 사용자 클릭 직후 동기적으로 창을 열어야 팝업 차단을 피함
+    if (CONFIG.kakao) window.open(CONFIG.kakao, '_blank', 'noopener');
+    copyText(lastBody).then(copied => {
+      preview.textContent = lastBody;
+      $('.cform__done-t', form).textContent = copied ? '✓ 문의 내용이 복사되었어요' : '아래 내용을 길게 눌러 복사해 주세요';
+      done.hidden = false; done.classList.remove('pop'); void done.offsetWidth; done.classList.add('pop');
+    });
   });
+  $('.js-recopy', form).addEventListener('click', () => copyText(lastBody).then(c => { $('.cform__done-t', form).textContent = c ? '✓ 다시 복사되었어요' : '아래 내용을 길게 눌러 복사해 주세요'; }));
+  $('.js-reopen', form).href = CONFIG.kakao || '#contact';
+  if (!CONFIG.email) $('.js-mail', form).remove();
   $$('input, select', form).forEach(el => el.addEventListener('change', () => (el.closest('.field') || el.closest('.agree'))?.classList.remove('err')));
 
   /* loader */
